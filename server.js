@@ -1,9 +1,16 @@
-// server.js
 const express = require('express');
 const fetch = require('node-fetch');
 const app = express();
 
 app.use(express.json());
+
+// CORS middleware
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://michael-chiem.github.io');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    next();
+});
 
 const sinchAuthToken = "Bearer a1c19c660dad416998f4033bcc6c3076";
 
